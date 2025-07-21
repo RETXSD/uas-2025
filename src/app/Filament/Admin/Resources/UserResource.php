@@ -68,7 +68,10 @@ class UserResource extends Resource
                             ->prefixIcon('heroicon-m-envelope')
                             ->columnSpan('full')
                             ->email(),
-
+                        Forms\Components\TextInput::make('phone')
+                            ->required()
+                            ->maxLength(15)
+                            ->prefixIcon('heroicon-m-phone'),
                         Forms\Components\TextInput::make('password')
                             ->password()
                             ->confirmed()
@@ -110,6 +113,9 @@ class UserResource extends Resource
                     ->label('Avatar')
                     ->circular(),
                 Tables\Columns\TextColumn::make('email')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('phone')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('roles.name')

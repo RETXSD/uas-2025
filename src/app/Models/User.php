@@ -16,6 +16,10 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory,HasRoles, Notifiable;
 
+    public function pembeli()
+    {
+        return $this->hasOne(Pembeli::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -64,6 +68,10 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        return match ($panel->getId()) {
+            'admin'   => $this->hasRole('super_admin'),
+            'store' => $this->hasRole('pembeli'),
+            default   => false,
+        };
     }
 }
