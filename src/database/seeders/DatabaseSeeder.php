@@ -24,5 +24,15 @@ class DatabaseSeeder extends Seeder
         // $user->assignRole('super_admin');
 
         // Role::create(['name' => 'pembeli']);
+        // $pembeliPermissions = [
+        //     'view_product',
+        //     'view_any_product',
+        //     'view_transaksi',
+        //     'view_any_transaksi',
+        //     'create_transaksi',
+        //     'update_transaksi',
+        //     'delete_transaksi',
+        //     'delete_any_transaksi',
+        // ];
     }
 }
