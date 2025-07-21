@@ -31,7 +31,10 @@ class PembeliResource extends Resource
                     Forms\Components\Textarea::make('email')
                         ->required()
                         ->columnSpanFull(),
-                    
+                        Forms\Components\TextInput::make('api_token')
+                        ->disabled()
+                        ->label('Token')
+                        ->visibleOn('edit')
 
             ]);
     }
@@ -45,6 +48,8 @@ class PembeliResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->searchable()
                     ->limit(50),
+                Tables\Columns\TextColumn::make('api_token')
+                    ->copyable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

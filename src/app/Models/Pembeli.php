@@ -9,12 +9,23 @@ class Pembeli extends Model
 {
     use HasFactory;
 
+    protected static function boot(){
+        parent::boot();
+
+        static::creating(function ($pembeli) {
+
+            if (empty($pembeli->api_token)) {
+                $pembeli->api_token = str::random(10);
+            }
+    });
+    }
     protected $table = 'pembelis';
 
     protected $fillable = [
         'user_id', 
         'name',
         'email',
+        'api_token',
     ];
 
     // Relasi ke User
