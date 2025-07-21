@@ -33,7 +33,15 @@ class TransaksiResource extends Resource
         // Load relasi user untuk menampilkan nama pembeli
         $query->with('user');
 
-        if (Auth::user()->hasRole('pembeli')) {
+        $user = Auth::user();
+        
+        // Jika user adalah super_admin, tampilkan semua transaksi
+        if ($user->hasRole('super_admin')) {
+            return $query;
+        }
+        
+        // Jika user adalah pembeli, hanya tampilkan transaksi miliknya
+        if ($user->hasRole('pembeli')) {
             $query->where('user_id', Auth::id());
         }
 
