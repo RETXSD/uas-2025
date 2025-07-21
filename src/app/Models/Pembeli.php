@@ -12,12 +12,12 @@ class Pembeli extends Model
     protected static function boot(){
         parent::boot();
 
-        static::creating(function ($pembeli) {
+    //     static::creating(function ($pembeli) {
 
-            if (empty($pembeli->api_token)) {
-                $pembeli->api_token = str::random(10);
-            }
-    });
+    //         if (empty($pembeli->api_token)) {
+    //             $pembeli->api_token = str::random(10);
+    //         }
+    // });
     }
     protected $table = 'pembelis';
 

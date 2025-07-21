@@ -45,10 +45,10 @@ class Register extends BaseRegister
 
         event(new Registered($user));
 
-        // Kirim email tanpa view (plain text)
-        Mail::raw("Halo {$user->name}, terima kasih telah mendaftar di aplikasi kami!", function ($message) use ($user) { $message->to($user->email)
-            ->subject('Selamat Datang di Aplikasi Kami');
-        });
+        // // Kirim email tanpa view (plain text)
+        // Mail::raw("Halo {$user->name}, terima kasih telah mendaftar di aplikasi kami!", function ($message) use ($user) { $message->to($user->email)
+        //     ->subject('Selamat Datang di Aplikasi Kami');
+        // });
 
         return $user;
 
